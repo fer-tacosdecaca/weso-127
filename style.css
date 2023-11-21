@@ -50,6 +50,8 @@ body
   canvas
   {
     border: 5.5px solid lightskyblue;
-    border-radius: 999999px;    
+    border-radius: 10px;    
+  margin-top: 1000;
   }
+
 
