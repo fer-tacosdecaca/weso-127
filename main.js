@@ -14,7 +14,7 @@ function preload(){
 }
 
 function setup(){
-    canvas = createCanvas(600,250);
+    canvas = createCanvas(600,600);
     canvas.center();
 
     video = createCapture(VIDEO);
@@ -44,11 +44,30 @@ function gotPoses(results){
 }
 
 function draw(){
-    image(video, 0, 0 ,600, 250);
-
+    image(video, 0, 0 ,600, 600);
+if(scoreRightWrist>0.2){
     fill("#FF0000")
     stroke("#FF00FF");
     circle(rightWristX,rightWristY,20);
+    
+    if (rightWristX >0 && rightWristX <=100) {
+document.getElementById("speed").innerHTML = "speed = 2.5x"
+        song.rate(2.5)
+    } else if(rightWristX >100 && rightWristX <=200) {
+        document.getElementById("speed").innerHTML = "speed = 5x"
+        song.rate(5)   
+    } else if(rightWristX >200 && rightWristX <=300){
+        document.getElementById("speed").innerHTML = "speed = 10x"
+        song.rate(10)
+    }else if(rightWristX >200 && rightWristX <=300){
+        document.getElementById("speed").innerHTML = "speed = 20x"
+        song.rate(20)
+    }
+else if(rightWristX >200 && rightWristX <=300){
+    document.getElementById("speed").innerHTML = "speed = 40x"
+    song.rate(40)
+}
+}
 if(scoreLeftWrist>0.2){
     fill("#00FF00")
     stroke("#FF00FF");
@@ -57,6 +76,7 @@ if(scoreLeftWrist>0.2){
     document.getElementById("volume").innerHTML = soso;
 }
 }
+
 
 function play(){
     song.play();
